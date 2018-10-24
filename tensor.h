@@ -2,11 +2,11 @@
  * Title: Intelligenza Artificiale
  * Project: artificial_intelligence
  * Link: github.com/nickciava98/artificial_intelligence
- * File: tensor
+ * File: tensor.h
  * Author: Niccolò Ciavarella
  * Contact: n.ciavarella@outlook.it
  * Date: 18/10/2018
- * Version: 1.1
+ * Version: 2.0
  * Licence: GNU LGPL
 */
 
@@ -17,7 +17,7 @@
 typedef char* ten;
 
 void tensorInit(ten [MAXROW][MAXCOL][MAXDEP]);
-void tensorLoad(ten [MAXROW][MAXCOL][MAXDEP], ten [MAXROW][MAXCOL][MAXDEP]);
+void tensorLoad(ten [MAXROW][MAXCOL][MAXDEP], ten [MAXROW][MAXCOL][MAXDEP], char*);
 String tensorFind(ten [MAXROW][MAXCOL][MAXDEP], ten [MAXROW][MAXCOL][MAXDEP], String);
 
 void tensorInit(ten t[MAXROW][MAXCOL][MAXDEP])
@@ -35,68 +35,68 @@ void tensorInit(ten t[MAXROW][MAXCOL][MAXDEP])
   }
 }
 
-void tensorLoad(ten t1[MAXROW][MAXCOL][MAXDEP], ten t2[MAXROW][MAXCOL][MAXDEP])
+void tensorLoad(ten t1[MAXROW][MAXCOL][MAXDEP], ten t2[MAXROW][MAXCOL][MAXDEP], char* lan)
 {
   //Input: t1 [0][0][0] -> [2][1][4]
   //Saluti (inizio conversazione)
-  t1[0][0][0] = "ciao";
-  t1[0][0][1] = "buongiorno";
-  t1[0][0][2] = "buona giornata";
-  t1[0][0][3] = "buon pomeriggio";
-  t1[0][0][4] = "buonasera";
-  t1[0][1][0] = "buona sera";
-  t1[0][1][1] = "buona serata";
-  t1[0][1][2] = "ciao,buongiorno";
-  t1[0][1][3] = "ciao, buongiorno";
-  t1[0][1][4] = "ciao buongiorno";
-  t1[0][2][0] = "ciao,buona giornata";
-  t1[0][2][1] = "ciao, buona giornata";
-  t1[0][2][2] = "ciao buona giornata";
-  t1[0][2][3] = "ciao,buon pomeriggio";
-  t1[0][2][4] = "ciao, buon pomeriggio";
-  t1[0][3][0] = "ciao buon pomeriggio";
-  t1[0][3][1] = "ciao,buonasera";
-  t1[0][3][2] = "ciao, buonasera";
-  t1[0][3][3] = "ciao buonasera";
-  t1[0][3][4] = "ciao,buona sera";
-  t1[0][4][0] = "ciao, buona sera";
-  t1[0][4][1] = "ciao buona sera";
-  t1[0][4][2] = "ciao,buona serata";
-  t1[0][4][3] = "ciao, buona serata";
-  t1[0][4][4] = "ciao buona serata";
+  t1[0][0][0] = (lan == "it" ? "ciao" : (lan == "en" ? "hello" : ""));
+  t1[0][0][1] = (lan == "it" ? "buongiorno" : (lan == "en" ? "good morning" : ""));
+  t1[0][0][2] = (lan == "it" ? "buona giornata" : (lan == "en" ? "good day" : ""));
+  t1[0][0][3] = (lan == "it" ? "buon pomeriggio" : (lan == "en" ? "good afternoon" : ""));
+  t1[0][0][4] = (lan == "it" ? "buonasera" : (lan == "en" ? "good evening" : ""));
+  t1[0][1][0] = (lan == "it" ? "buona sera" : (lan == "en" ? "good evening" : ""));
+  t1[0][1][1] = (lan == "it" ? "buona serata" : (lan == "en" ? "good evening" : ""));
+  t1[0][1][2] = (lan == "it" ? "ciao,buongiorno" : (lan == "en" ? "hello,good morning" : ""));
+  t1[0][1][3] = (lan == "it" ? "ciao, buongiorno" : (lan == "en" ? "hello, good morning" : ""));
+  t1[0][1][4] = (lan == "it" ? "ciao buongiorno" : (lan == "en" ? "hello good morning": ""));
+  t1[0][2][0] = (lan == "it" ? "ciao,buona giornata": (lan == "en" ? "hello,good day" : ""));
+  t1[0][2][1] = (lan == "it" ? "ciao, buona giornata" : (lan == "en" ? "hello, good day" : ""));
+  t1[0][2][2] = (lan == "it" ? "ciao buona giornata" : (lan == "en" ? "hello good day" : ""));
+  t1[0][2][3] = (lan == "it" ? "ciao,buon pomeriggio" : (lan == "en" ? "hello,good afternoon" : ""));
+  t1[0][2][4] = (lan == "it" ? "ciao, buon pomeriggio" : (lan == "en" ? "hello, good afternoon" : ""));
+  t1[0][3][0] = (lan == "it" ? "ciao buon pomeriggio" : (lan == "en" ? "hello good afternoon" : ""));
+  t1[0][3][1] = (lan == "it" ? "ciao,buonasera" : (lan == "en" ? "hello,good evening" : ""));
+  t1[0][3][2] = (lan == "it" ? "ciao, buonasera" : (lan == "en" ? "hello, good evening" : ""));
+  t1[0][3][3] = (lan == "it" ? "ciao buonasera" : (lan == "en" ? "hello good evening" : ""));
+  t1[0][3][4] = (lan == "it" ? "ciao,buona sera" : (lan == "en" ? "hello,good evening" : ""));
+  t1[0][4][0] = (lan == "it" ? "ciao, buona sera" : (lan == "en" ? "hello, good evening" : ""));
+  t1[0][4][1] = (lan == "it" ? "ciao buona sera" : (lan == "en" ? "hello good evening" : ""));
+  t1[0][4][2] = (lan == "it" ? "ciao,buona serata" : (lan == "en" ? "hello,good evening" : ""));
+  t1[0][4][3] = (lan == "it" ? "ciao, buona serata" : (lan == "en" ? "hello, good evening" : ""));
+  t1[0][4][4] = (lan == "it" ? "ciao buona serata" : (lan == "en" ? "hello good evening" : ""));
 
   //Saluti (fine conversazione)
-  t1[1][0][0] = "ciao ciao";
-  t1[1][0][1] = "arrivederci";
-  t1[1][0][2] = "ciao,arrivederci";
-  t1[1][0][3] = "ciao, arrivederci";
-  t1[1][0][4] = "ciao arrivederci";
+  t1[1][0][0] = (lan == "it" ? "ciao ciao" : (lan == "en" ? "bye bye" : ""));
+  t1[1][0][1] = (lan == "it" ? "arrivederci" : (lan == "en" ? "goodbye" : ""));
+  t1[1][0][2] = (lan == "it" ? "ciao,arrivederci" : (lan == "en" ? "goodbye" : ""));
+  t1[1][0][3] = (lan == "it" ? "ciao, arrivederci" : (lan == "en" ? "goodbye" : ""));
+  t1[1][0][4] = (lan == "it" ? "ciao arrivederci" : (lan == "en" ? "goodbye" : ""));
 
   //Richieste (personali)
-  t1[1][1][0] = "come va?"; 
-  t1[1][1][1] = "come va";
-  t1[1][1][2] = "come stai?";
-  t1[1][1][3] = "come stai";
-  t1[1][1][4] = "ciao,come va?";
-  t1[1][2][0] = "ciao, come va?";
-  t1[1][2][1] = "ciao come va?";
-  t1[1][2][2] = "ciao,come va"; 
-  t1[1][2][3] = "ciao, come va";
-  t1[1][2][4] = "ciao come va";
-  t1[1][3][0] = "ciao,come stai?";
-  t1[1][3][1] = "ciao, come stai?";
-  t1[1][3][2] = "ciao come stai?";
-  t1[1][3][3] = "ciao,come stai";
-  t1[1][3][4] = "ciao, come stai";
-  t1[1][4][0] = "ciao come stai";
-  t1[1][4][1] = "che fai?";
-  t1[1][4][2] = "che fai";
-  t1[1][4][3] = "ciao,che fai?";
-  t1[1][4][4] = "ciao, che fai?";
-  t1[2][0][0] = "ciao che fai?";
-  t1[2][0][1] = "ciao,che fai";
-  t1[2][0][2] = "ciao, che fai";
-  t1[2][0][3] = "ciao che fai";
+  t1[1][1][0] = (lan == "it" ? "come va?" : (lan == "en" ? "how are you?" : "")); 
+  t1[1][1][1] = (lan == "it" ? "come va" : (lan == "en" ? "how are you" : ""));
+  t1[1][1][2] = (lan == "it" ? "come stai?" : (lan == "en" ? "how are you?" : ""));
+  t1[1][1][3] = (lan == "it" ? "come stai" : (lan == "en" ? "how are you" : ""));
+  t1[1][1][4] = (lan == "it" ? "ciao,come va?" : (lan == "en" ? "hi,how are you?" : ""));
+  t1[1][2][0] = (lan == "it" ? "ciao, come va?" : (lan == "en" ? "hi, how are you?" : ""));
+  t1[1][2][1] = (lan == "it" ? "ciao come va?" : (lan == "en" ? "hi how are you?" : ""));
+  t1[1][2][2] = (lan == "it" ? "ciao,come va" : (lan == "en" ? "hi,how are you" : "")); 
+  t1[1][2][3] = (lan == "it" ? "ciao, come va" : (lan == "en" ? "hi, how are you" : ""));
+  t1[1][2][4] = (lan == "it" ? "ciao come va" : (lan == "en" ? "hi how are you" : ""));
+  t1[1][3][0] = (lan == "it" ? "ciao,come stai?" : (lan == "en" ? "hi,how are you?" : ""));
+  t1[1][3][1] = (lan == "it" ? "ciao, come stai?" : (lan == "en" ? "hi, how are you?" : ""));
+  t1[1][3][2] = (lan == "it" ? "ciao come stai?" : (lan == "en" ? "hi how are you?" : ""));
+  t1[1][3][3] = (lan == "it" ? "ciao,come stai" : (lan == "en" ? "hi,how are you" : ""));
+  t1[1][3][4] = (lan == "it" ? "ciao, come stai" : (lan == "en" ? "hi, how are you" : ""));
+  t1[1][4][0] = (lan == "it" ? "ciao come stai" : (lan == "en" ? "hi how are you" : ""));
+  t1[1][4][1] = (lan == "it" ? "che fai?" : (lan == "en" ? "what are you doing?" : ""));
+  t1[1][4][2] = (lan == "it" ? "che fai" : (lan == "en" ? "what are you doing" : ""));
+  t1[1][4][3] = (lan == "it" ? "ciao,che fai?" : (lan == "en" ? "hi,what are you doing?" : ""));
+  t1[1][4][4] = (lan == "it" ? "ciao, che fai?" : (lan == "en" ? "hi, what are you doing?" : ""));
+  t1[2][0][0] = (lan == "it" ? "ciao che fai?" : (lan == "en" ? "hi what are you doing?" : ""));
+  t1[2][0][1] = (lan == "it" ? "ciao,che fai" : (lan == "en" ? "hi,what are you doing" : ""));
+  t1[2][0][2] = (lan == "it" ? "ciao, che fai" : (lan == "en" ? "hi, what are you doing" : ""));
+  t1[2][0][3] = (lan == "it" ? "ciao che fai" : (lan == "en" ? "hi what are you doing" : ""));
 
   /*
   //Richieste (generiche)
@@ -112,115 +112,115 @@ void tensorLoad(ten t1[MAXROW][MAXCOL][MAXDEP], ten t2[MAXROW][MAXCOL][MAXDEP])
   t[2][2][3] = "che giorno e oggi";*/
 
   //Richieste (tecniche)
-  t1[2][0][4] = "accendi";
-  t1[2][1][0] = "on";
-  t1[2][1][1] = "svegliati";
-  t1[2][1][2] = "spegni";
-  t1[2][1][3] = "off";
-  t1[2][1][4] = "addormentati";
+  t1[2][0][4] = (lan == "it" ? "accendi" : (lan == "en" ? "switch on" : ""));
+  t1[2][1][0] = (lan == "it" ? "on" : (lan == "en" ? "on" : ""));
+  t1[2][1][1] = (lan == "it" ? "svegliati" : (lan == "en" ? "wake up" : ""));
+  t1[2][1][2] = (lan == "it" ? "spegni" : (lan == "en" ? "switch off" : ""));
+  t1[2][1][3] = (lan == "it" ? "off" : (lan == "en" ? "off" : ""));
+  t1[2][1][4] = (lan == "it" ? "addormentati" : (lan == "en" ? "sleep" : ""));
 
   //Extra (vuoto): t1 [2][2][0] -> [2][4][4]
-  t1[2][2][0] = "";
-  t1[2][2][1] = "";
-  t1[2][2][2] = "";
-  t1[2][2][3] = "";
-  t1[2][2][4] = "";
-  t1[2][3][0] = "";
-  t1[2][3][1] = "";
-  t1[2][3][2] = "";
-  t1[2][3][3] = "";
-  t1[2][3][4] = "";
-  t1[2][4][0] = "";
-  t1[2][4][1] = "";
-  t1[2][4][2] = "";
-  t1[2][4][3] = "";
-  t1[2][4][4] = "";
+  t1[2][2][0] = (lan == "it" ? "come ti chiami?" : (lan == "en" ? "what is your name?" : ""));
+  t1[2][2][1] = (lan == "it" ? "come ti chiami" : (lan == "en" ? "what is your name" : ""));
+  t1[2][2][2] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t1[2][2][3] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t1[2][2][4] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t1[2][3][0] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t1[2][3][1] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t1[2][3][2] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t1[2][3][3] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t1[2][3][4] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t1[2][4][0] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t1[2][4][1] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t1[2][4][2] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t1[2][4][3] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t1[2][4][4] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
 
   //Output: t2 [0][0][0] -> [2][1][4]
   //Risposte saluti (inizio conversazione)
-  t2[0][0][0] = "ciao";
-  t2[0][0][1] = "buongiorno";
-  t2[0][0][2] = "anche a te";
-  t2[0][0][3] = "anche a te";
-  t2[0][0][4] = "buonasera";
-  t2[0][1][0] = "buona sera";
-  t2[0][1][1] = "anche a te";
-  t2[0][1][2] = "ciao";
-  t2[0][1][3] = "ciao";
-  t2[0][1][4] = "ciao";
-  t2[0][2][0] = "ciao,anche a te";
-  t2[0][2][1] = "ciao, anche a te";
-  t2[0][2][2] = "ciao anche a te";
-  t2[0][2][3] = "ciao,anche a te";
-  t2[0][2][4] = "ciao, anche a te";
-  t2[0][3][0] = "ciao anche a te";
-  t2[0][3][1] = "ciao";
-  t2[0][3][2] = "ciao";
-  t2[0][3][3] = "ciao";
-  t2[0][3][4] = "ciao";
-  t2[0][4][0] = "ciao";
-  t2[0][4][1] = "ciao";
-  t2[0][4][2] = "ciao,anche a te";
-  t2[0][4][3] = "ciao, anche a te";
-  t2[0][4][4] = "ciao anche a te";
+  t2[0][0][0] = (lan == "it" ? "ciao" : (lan == "en" ? "hello" : ""));
+  t2[0][0][1] = (lan == "it" ? "buongiorno" : (lan == "en" ? "good morning" : ""));
+  t2[0][0][2] = (lan == "it" ? "anche a te" : (lan == "en" ? "you too" : ""));
+  t2[0][0][3] = (lan == "it" ? "anche a te" : (lan == "en" ? "you too" : ""));
+  t2[0][0][4] = (lan == "it" ? "buonasera" : (lan == "en" ? "good evening" : ""));
+  t2[0][1][0] = (lan == "it" ? "buona sera" : (lan == "en" ? "good evening" : ""));
+  t2[0][1][1] = (lan == "it" ? "anche a te" : (lan == "en" ? "you too" : ""));
+  t2[0][1][2] = (lan == "it" ? "ciao" : (lan == "en" ? "hi" : ""));
+  t2[0][1][3] = (lan == "it" ? "ciao" : (lan == "en" ? "hi" : ""));
+  t2[0][1][4] = (lan == "it" ? "ciao" : (lan == "en" ? "hi" : ""));
+  t2[0][2][0] = (lan == "it" ? "ciao,anche a te" : (lan == "en" ? "hi,you too" : ""));
+  t2[0][2][1] = (lan == "it" ? "ciao, anche a te" : (lan == "en" ? "hi, you too" : ""));
+  t2[0][2][2] = (lan == "it" ? "ciao anche a te" : (lan == "en" ? "hi you too" : ""));
+  t2[0][2][3] = (lan == "it" ? "ciao,anche a te" : (lan == "en" ? "hi,you too" : ""));
+  t2[0][2][4] = (lan == "it" ? "ciao, anche a te" : (lan == "en" ? "hi, you too" : ""));
+  t2[0][3][0] = (lan == "it" ? "ciao anche a te" : (lan == "en" ? "hi you too" : ""));
+  t2[0][3][1] = (lan == "it" ? "ciao" : (lan == "en" ? "hi" : ""));
+  t2[0][3][2] = (lan == "it" ? "ciao" : (lan == "en" ? "hi" : ""));
+  t2[0][3][3] = (lan == "it" ? "ciao" : (lan == "en" ? "hi" : ""));
+  t2[0][3][4] = (lan == "it" ? "ciao" : (lan == "en" ? "hi" : ""));
+  t2[0][4][0] = (lan == "it" ? "ciao" : (lan == "en" ? "hi" : ""));
+  t2[0][4][1] = (lan == "it" ? "ciao" : (lan == "en" ? "hi" : ""));
+  t2[0][4][2] = (lan == "it" ? "ciao,anche a te" : (lan == "en" ? "hi,you too" : ""));
+  t2[0][4][3] = (lan == "it" ? "ciao, anche a te" : (lan == "en" ? "hi, you too" : ""));
+  t2[0][4][4] = (lan == "it" ? "ciao anche a te" : (lan == "en" ? "hi you too" : ""));
 
   //Risposte saluti (fine conversazione)
-  t2[1][0][0] = "ciao ciao";
-  t2[1][0][1] = "arrivederci";
-  t2[1][0][2] = "ciao";
-  t2[1][0][3] = "ciao";
-  t2[1][0][4] = "ciao";
+  t2[1][0][0] = (lan == "it" ? "ciao ciao" : (lan == "en" ? "bye bye" : ""));
+  t2[1][0][1] = (lan == "it" ? "arrivederci" : (lan == "en" ? "goodbye" : ""));
+  t2[1][0][2] = (lan == "it" ? "ciao" : (lan == "en" ? "goodbye" : ""));
+  t2[1][0][3] = (lan == "it" ? "ciao" : (lan == "en" ? "goodbye" : ""));
+  t2[1][0][4] = (lan == "it" ? "ciao" : (lan == "en" ? "goodbye" : ""));
 
   //Risposte richieste (personali)
-  t2[1][1][0] = "bene";
-  t2[1][1][1] = "tutto ok";
-  t2[1][1][2] = "bene";
-  t2[1][1][3] = "molto bene";
-  t2[1][1][4] = "ciao,bene";
-  t2[1][2][0] = "ciao, bene";
-  t2[1][2][1] = "ciao bene";
-  t2[1][2][2] = "ciao,tutto ok";
-  t2[1][2][3] = "ciao, tutto ok";
-  t2[1][2][4] = "ciao tutto ok";
-  t2[1][3][0] = "ciao,molto bene";
-  t2[1][3][1] = "ciao, molto bene";
-  t2[1][3][2] = "ciao molto bene";
-  t2[1][3][3] = "niente";
-  t2[1][3][4] = "nulla";
-  t2[1][4][0] = "ciao,niente";
-  t2[1][4][1] = "ciao, niente";
-  t2[1][4][2] = "ciao niente";
-  t2[1][4][3] = "ciao,nulla";
-  t2[1][4][4] = "ciao, nulla";
-  t2[2][0][0] = "ciao nulla";
-  t2[2][0][1] = "ciao,niente";
-  t2[2][0][2] = "ciao, niente";
-  t2[2][0][3] = "ciao niente";
-
+  t2[1][1][0] = (lan == "it" ? "bene" : (lan == "en" ? "fine" : ""));
+  t2[1][1][1] = (lan == "it" ? "tutto ok" : (lan == "en" ? "all okay" : ""));
+  t2[1][1][2] = (lan == "it" ? "bene" : (lan == "en" ? "fine" : ""));
+  t2[1][1][3] = (lan == "it" ? "molto bene" : (lan == "en" ? "really fine" : ""));
+  t2[1][1][4] = (lan == "it" ? "ciao,bene": (lan == "en" ? "hi,fine" : ""));
+  t2[1][2][0] = (lan == "it" ? "ciao, bene" : (lan == "en" ? "hi, fine" : ""));
+  t2[1][2][1] = (lan == "it" ? "ciao bene" : (lan == "en" ? "hi fine" : ""));
+  t2[1][2][2] = (lan == "it" ? "ciao,tutto ok" : (lan == "en" ? "hi,all okay" : ""));
+  t2[1][2][3] = (lan == "it" ? "ciao, tutto ok" : (lan == "en" ? "hi, all okay" : ""));
+  t2[1][2][4] = (lan == "it" ? "ciao tutto ok" : (lan == "en" ? "hi all okay" : ""));
+  t2[1][3][0] = (lan == "it" ? "ciao,molto bene" : (lan == "en" ? "hi,really fine" : ""));
+  t2[1][3][1] = (lan == "it" ? "ciao, molto bene" : (lan == "en" ? "hi, really fine" : ""));
+  t2[1][3][2] = (lan == "it" ? "ciao molto bene" : (lan == "en" ? "hi really fine" : ""));
+  t2[1][3][3] = (lan == "it" ? "ciao,bene" : (lan == "en" ? "hi,fine" : ""));
+  t2[1][3][4] = (lan == "it" ? "ciao, bene" : (lan == "en" ? "hi, fine" : ""));
+  t2[1][4][0] = (lan == "it" ? "ciao bene" : (lan == "en" ? "hi fine" : ""));  
+  t2[1][4][1] = (lan == "it" ? "niente" : (lan == "en" ? "nothing" : ""));
+  t2[1][4][2] = (lan == "it" ? "nulla" : (lan == "en" ? "nothing" : ""));
+  t2[1][4][3] = (lan == "it" ? "ciao,niente" : (lan == "en" ? "hi,nothing" : ""));
+  t2[1][4][4] = (lan == "it" ? "ciao, niente" : (lan == "en" ? "hi, nothing" : ""));
+  t2[2][0][0] = (lan == "it" ? "ciao niente" : (lan == "en" ? "hi nothing" : ""));
+  t2[2][0][1] = (lan == "it" ? "ciao,nulla" : (lan == "en" ? "hi,nothing" : ""));
+  t2[2][0][2] = (lan == "it" ? "ciao, nulla" : (lan == "en" ? "hi, nothing" : ""));
+  t2[2][0][3] = (lan == "it" ? "ciao nulla" : (lan == "en" ? "hi nothing" : ""));
+  
   //Risposte richieste (tecniche)
-  t2[2][0][4] = "eccomi";
-  t2[2][1][0] = "sono qui";
-  t2[2][1][1] = "sono sveglia";
-  t2[2][1][2] = "ciao ciao";
-  t2[2][1][3] = "vado via";
-  t2[2][1][4] = "a presto";
+  t2[2][0][4] = (lan == "it" ? "eccomi" : (lan == "en" ? "I am here" : ""));
+  t2[2][1][0] = (lan == "it" ? "sono qui" : (lan == "en" ? "I am here" : ""));
+  t2[2][1][1] = (lan == "it" ? "sono sveglia" : (lan == "en" ? "I am up" : ""));
+  t2[2][1][2] = (lan == "it" ? "ciao ciao" : (lan == "en" ? "bye bye" : ""));
+  t2[2][1][3] = (lan == "it" ? "vado via" : (lan == "en" ? "I leave" : ""));
+  t2[2][1][4] = (lan == "it" ? "a presto" : (lan == "en" ? "see you soon" : ""));
 
   //Extra (vuoto): t2 [2][2][0] -> [2][4][4]
-  t2[2][2][0] = "";
-  t2[2][2][1] = "";
-  t2[2][2][2] = "";
-  t2[2][2][3] = "";
-  t2[2][2][4] = "";
-  t2[2][3][0] = "";
-  t2[2][3][1] = "";
-  t2[2][3][2] = "";
-  t2[2][3][3] = "";
-  t2[2][3][4] = "";
-  t2[2][4][0] = "";
-  t2[2][4][1] = "";
-  t2[2][4][2] = "";
-  t2[2][4][3] = "";
-  t2[2][4][4] = "";
+  t2[2][2][0] = (lan == "it" ? "sono sara" : (lan == "en" ? "I am sara" : ""));
+  t2[2][2][1] = (lan == "it" ? "mi chiamo sara" : (lan == "en" ? "my name is sara" : ""));
+  t2[2][2][2] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t2[2][2][3] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t2[2][2][4] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t2[2][3][0] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t2[2][3][1] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t2[2][3][2] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t2[2][3][3] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t2[2][3][4] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t2[2][4][0] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t2[2][4][1] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t2[2][4][2] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t2[2][4][3] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
+  t2[2][4][4] = (lan == "it" ? "" : (lan == "en" ? "" : ""));
 }
 
 String tensorFind(ten t1[MAXROW][MAXCOL][MAXDEP], ten t2[MAXROW][MAXCOL][MAXDEP], String x)
